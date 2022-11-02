@@ -14,17 +14,26 @@
             window.alert('The button has been clicked');
         }
 
+        //STEP 1
         $('#button1').click(alertMessage);
+
+        //STEP 2
         $('#button2').bind('click', alertMessage);
+
+        //STEP 3
         $('#button3').on('click', alertMessage);
+
+        //STEP 4
         $('#button4, #button5').on('click', alertMessage);
        
+         //STEP 5
         $('#div1').width('400px');
         $('#div1').height('400px');
         $('#div1').on('click mouseenter mouseleave', function (){
             window.alert('div1 was either clicked on, the mouse enter it, or mouse left it');
         });
 
+         //STEP 6
         $('#div2').width('400px');
         $('#div2').height('400px');
 
@@ -42,42 +51,43 @@
 
         $('#div1, #div2').css('background-color', 'grey').css('margin','10px');
 
-        
+         //STEP 7
         $('a').click((e)=> {
             e.preventDefault();
             $('a').css('color', 'red');
             alert(event.target.nodeName);
         });
 
+        //STEP 8
         $(window).on('resize',(event) => {
             $('#div3').html(`Width : ${window.innerWidth}, Height: ${window.innerHeight}`);    
         });
 
+         //STEP 9
         $('#input').focusin(() => {
             $('#input').css("background-color", "lightgray");
         });
-
         $('#input').focusout(() => {
             $('#input').css("background-color", "white");
         });
 
+         //STEP 10
         $('#submit').on('click', (a) => {
-            $('#name').css('border', '1px solid black');
-            $('#mail').css('border', '1px solid black');
+            event.preventDefault();
             if ($('#name').val() === '' || $('#mail').val() === '' ){
                 window.alert('Please enter required fields Name and Email');
-                a.preventDefault();
-                if ($('#name').val() ==='') {
-                    $('#name').css('border', '1px solid red');
-                } 
-                if ($('#mail').val() ==='') {
-                    $('#mail').css('border', '1px solid red');
-                }
+            }
+            if ($('#name').val() ==='') {
+                $('#name').css('border', '1px solid red');
             } else {
                 $('#name').css('border', '1px solid green');  
+            }
+            if ($('#mail').val() ==='') {
+                $('#mail').css('border', '1px solid red');
+            } else {
                 $('#mail').css('border', '1px solid green');  
             }
-        })
+        });
       }); 
     </script>
 </head>
